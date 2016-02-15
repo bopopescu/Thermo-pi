@@ -41,7 +41,7 @@ import sqlite3
 PATH_THERM = "/home/pi/thermo/" #path to this script
 DB_SERVER ='192.168.0.111'  # MySQL : IP server (localhost if mySQL is on the same machine)
 DB_USER='owl_intuition'     # MySQL : user  
-DB_PWD='ttp2570'            # MySQL : password 
+DB_PWD='*******'            # MySQL : password 
 DB_BASE='owl_intuition'     # MySQL : database name
 
 #base_dir = '/sys/bus/w1/devices/'
