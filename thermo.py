@@ -93,11 +93,12 @@ def query_db(sql):
             db_bck.text_factory = str #tell sqlite to work with str instead of unicode
             cursor_bck = db_bck.cursor()
 
-            cursor_bck.execute("""SELECT 'DEFAULT' as id, date, sonde1, sonde2, sonde3 FROM PiTemp ORDER BY date ASC """)
+            cursor_bck.execute("""SELECT  date, sonde1, sonde2, sonde3 FROM PiTemp ORDER BY date ASC """)
             result_pitemp = cursor_bck.fetchall ()
            
             for row in result_pitemp:
-                cursor.execute("""INSERT INTO PiTemp VALUES {0}""".format(row))
+                backup_row += 1
+                cursor.execute("""INSERT INTO PiTemp (date, sonde1, sonde2, sonde3) VALUES ('%s','%s','%s','%s')"""% (row[0],row[1],row[2],row[3]))
                 
             db_bck.close()
             log = time.strftime('%Y-%m-%d %H:%M:%S') + " INFO : " + str(backup_row) + " rows restored to MySQL\n"
@@ -185,7 +186,7 @@ for (i, sonde) in enumerate(sondes):
 
 	temp_raw = lines[1].split("=")[1]     # when YES then read temp (after =) in second line
 	sonde_value[i] = round(int(temp_raw) / 1000.0, 1)
-#	print i, sonde_value[i] #debug
+	#print i, sonde_value[i] #debug
 
 query_db("""INSERT INTO PiTemp (date, sonde1, sonde2, sonde3) VALUES ('%s','%s','%s','%s')
          """ % (datebuff, sonde_value[0], sonde_value[1], sonde_value[2]))
