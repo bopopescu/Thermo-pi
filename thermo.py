@@ -46,11 +46,11 @@ DB_BASE='owl_intuition'     # MySQL : database name
 
 #base_dir = '/sys/bus/w1/devices/'
 #device_folder = glob.glob(base_dir + '28*')[0]
-#device_file = '/sys/bus/w1/devices/w1_bus_master1/28-000005f2424d' + '/w1_slave'
+#device_file = '/sys/bus/w1/devices/w1_bus_main1/28-000005f2424d' + '/w1_subordinate'
 
-sonde1 = "/sys/bus/w1/devices/w1_bus_master1/28-000005f2424d/w1_slave"
-sonde2 = "/sys/bus/w1/devices/w1_bus_master1/28-000005f2764e/w1_slave"
-sonde3 = "/sys/bus/w1/devices/w1_bus_master1/28-000005f396a0/w1_slave"
+sonde1 = "/sys/bus/w1/devices/w1_bus_main1/28-000005f2424d/w1_subordinate"
+sonde2 = "/sys/bus/w1/devices/w1_bus_main1/28-000005f2764e/w1_subordinate"
+sonde3 = "/sys/bus/w1/devices/w1_bus_main1/28-000005f396a0/w1_subordinate"
 sondes = [sonde1, sonde2, sonde3]
 sonde_value = [0, 0, 0]
 
